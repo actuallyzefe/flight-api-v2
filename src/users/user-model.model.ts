@@ -16,7 +16,7 @@ export class User {
   password: string;
 
   @Prop({ type: Date, required: true })
-  date: Date;
+  birth_date: Date;
 
   @Prop({ type: String, required: true })
   gender: string;

@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { InjectStripe } from 'nestjs-stripe';
 import { Flight } from 'src/flights/flight-model.model';
 import Stripe from 'stripe';
+import { UserInfoDto } from './dtos/user-info.dto';
 
 @Injectable()
 export class UsersService {
@@ -13,12 +14,27 @@ export class UsersService {
     @InjectModel(Flight.name) private flightModel: Model<Flight>,
   ) {}
 
-  async checkout(req: RequestExpress, id: string) {
+  async checkout(
+    req: RequestExpress,
+    id: string,
+    userCredentials: UserInfoDto,
+  ) {
     const flight = await this.flightModel.findById(id);
     if (!flight) throw new NotFoundException();
 
+    const {
+      name,
+      surname,
+      email,
+      phone_number,
+      birth_date,
+      id_card_no,
+      gender,
+    } = userCredentials;
+
     const session = await this.stripe.checkout.sessions.create({
       payment_method_types: ['card'],
+      customer_email: email,
       line_items: [
         {
           quantity: 1,

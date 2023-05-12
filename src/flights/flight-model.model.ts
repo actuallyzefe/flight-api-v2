@@ -3,7 +3,6 @@ import { HydratedDocument } from 'mongoose';
 
 @Schema()
 export class Flight {
-
   @Prop({ type: String, required: true })
   flight_name: string;
 
@@ -22,11 +21,11 @@ export class Flight {
   @Prop({ type: Date, required: true })
   date: Date;
 
-  @Prop({ type: Number, required: true })
-  departure: Number;
+  @Prop({ type: Date, required: true })
+  departure: Date;
 
-  @Prop({ type: Number, required: true })
-  arrival: Number;
+  @Prop({ type: Date, required: true })
+  arrival: Date;
 }
 
 export type FlightDocument = HydratedDocument<Flight>;

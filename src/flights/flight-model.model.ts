@@ -3,11 +3,18 @@ import { HydratedDocument } from 'mongoose';
 
 @Schema()
 export class Flight {
+
+  @Prop({ type: String, required: true })
+  flight_name: string;
+
   @Prop({ type: String, required: true })
   to: string;
 
   @Prop({ type: String, required: true })
   from: string;
+
+  @Prop({ type: String, required: true })
+  airline: string;
 
   @Prop({ type: Number, required: true })
   price: number;

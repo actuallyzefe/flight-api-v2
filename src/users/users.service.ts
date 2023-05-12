@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Request } from 'express';
+import { RequestExpress } from 'express';
 import { Model } from 'mongoose';
 import { InjectStripe } from 'nestjs-stripe';
 import { Flight } from 'src/flights/flight-model.model';
@@ -13,7 +13,7 @@ export class UsersService {
     @InjectModel(Flight.name) private flightModel: Model<Flight>,
   ) {}
 
-  async checkout(req: Request, id: string) {
+  async checkout(req: RequestExpress, id: string) {
     const flight = await this.flightModel.findById(id);
     if (!flight) throw new NotFoundException();
 

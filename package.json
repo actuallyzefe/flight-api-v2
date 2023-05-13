@@ -27,10 +27,14 @@
     "@nestjs/mongoose": "^9.2.2",
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-express": "^9.0.0",
+    "@types/axios": "^0.14.0",
     "@types/bcrypt": "^5.0.0",
+    "@types/jsdom": "^21.1.1",
+    "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "jsdom": "^22.0.0",
     "mongoose": "^7.1.1",
     "nestjs-stripe": "^1.0.0",
     "passport": "^0.6.0",
@@ -38,7 +42,9 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
-    "stripe": "^12.5.0"
+    "soap": "^1.0.0",
+    "stripe": "^12.5.0",
+    "xmldom": "^0.6.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

@@ -22,15 +22,7 @@ export class UsersService {
     const flight = await this.flightModel.findById(id);
     if (!flight) throw new NotFoundException();
 
-    const {
-      name,
-      surname,
-      email,
-      phone_number,
-      birth_date,
-      id_card_no,
-      gender,
-    } = userCredentials;
+    const { email } = userCredentials;
 
     const session = await this.stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -53,6 +45,7 @@ export class UsersService {
       cancel_url: `${req.protocol}://${req.get('host')}/cancelled`,
     });
 
-    return session;
+    const sessionUrl = session.url;
+    return { sessionUrl };
   }
 }

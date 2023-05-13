@@ -27,17 +27,21 @@ export class CheckIDInterceptor implements NestInterceptor {
     };
 
     const url = 'https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL';
+    type Result = {
+      TCKimlikNoDogrulaResult: boolean;
+    };
 
     return new Promise((resolve, reject) => {
-      createClient(url, function (err, client) {
+      createClient(url, function (err: Error, client) {
         if (err) {
           reject(err);
         } else {
-          client.TCKimlikNoDogrula(args, function (err, result) {
+          client.TCKimlikNoDogrula(args, function (err: Error, result: Result) {
             if (err) {
               reject(err);
             } else {
               const user = result.TCKimlikNoDogrulaResult;
+
               if (user === false) {
                 reject(new NotFoundException());
               } else {

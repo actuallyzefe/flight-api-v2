@@ -1,3 +1,8 @@
+## Development Process
+
+Currently developing the app on develop branch.
+You can follow the updates or test the app on that branch.
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>

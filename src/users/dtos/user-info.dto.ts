@@ -1,8 +1,7 @@
 import {
-  IsDate,
-  IsDateString,
   IsEmail,
   IsNotEmpty,
+  IsNumber,
   IsPhoneNumber,
   IsString,
 } from 'class-validator';
@@ -23,10 +22,13 @@ export class UserInfoDto {
   @IsPhoneNumber()
   phone_number: string;
 
-  @IsDateString()
-  birth_date: Date;
+  @IsNumber()
+  @IsNotEmpty()
+  birth_year: number;
 
-  id_card_no: string;
+  @IsNumber()
+  @IsNotEmpty()
+  id_card_no: number;
 
   @IsString()
   @IsNotEmpty()
